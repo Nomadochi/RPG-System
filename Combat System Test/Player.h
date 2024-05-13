@@ -5,17 +5,12 @@
 
 class Player : public Character {
 private:
-	static Player* instance;
 	std::vector<Item*> inventory;
 	std::vector<Item*> equipment;
 
 public:
-	Player(const char* name, unsigned int level, unsigned int currentExperience, unsigned int nextLevelExperience,
-		unsigned int currentHealth, unsigned int maxHealth, unsigned int attack, unsigned int defense,
-		unsigned int speed, unsigned int luck, unsigned int specialAttack, unsigned int specialDefense,
-		Race race);
+	Player(std::string name, unsigned int level, unsigned int currentHealth, unsigned int maxHealth, StatBlock _stats, bool friendly, Race race);
 
-	static Player* getInstance();
 
 	void chooseName();
 	void chooseRace();

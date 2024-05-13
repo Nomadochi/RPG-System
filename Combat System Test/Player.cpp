@@ -2,21 +2,11 @@
 #include <iostream>
 #include <limits> 
 
-Player* Player::instance = nullptr;
 
-Player::Player(const char* name, unsigned int level, unsigned int currentExperience, unsigned int nextLevelExperience,
-	unsigned int currentHealth, unsigned int maxHealth, unsigned int attack, unsigned int defense,
-	unsigned int speed, unsigned int luck, unsigned int specialAttack, unsigned int specialDefense,
-	Race race)
-	: Character(name, level, currentExperience, nextLevelExperience, currentHealth, maxHealth, attack, defense, speed,
-		luck, specialAttack, specialDefense, race) {}
+Player::Player(std::string name, unsigned int level, unsigned int currentHealth, unsigned int maxHealth, StatBlock _stats, bool friendly, Race race)
+	: Character(name, level, currentHealth, maxHealth, stats, friendly, race) {}
 
-Player* Player::getInstance() {
-	if (!instance) {
-		instance = new Player("Default", 1, 0, 100, 100, 100, 10, 10, 10, 10, 10, 10, HUMAN);
-	}
-	return instance;
-}
+
 
 void Player::chooseName() {
 	const int BUFFER_SIZE = 256; // Adjust the buffer size as needed
@@ -52,9 +42,9 @@ void Player::chooseName() {
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 	} while (!isValid);
-
+	std::string answer = input;
 	// Set the name
-	setName(input);
+	setName(answer);
 }
 
 void Player::chooseRace() {

@@ -9,16 +9,14 @@ protected:
 	Race race;
 
 public:
-	Character(const char* name, unsigned int level, unsigned int currentExperience, unsigned int nextLevelExperience,
-		unsigned int currentHealth, unsigned int maxHealth, unsigned int attack, unsigned int defense,
-		unsigned int speed, unsigned int luck, unsigned int specialAttack, unsigned int specialDefense,
-		Race race);
+	Character(std::string name, unsigned int level,	unsigned int currentHealth, unsigned int maxHealth, StatBlock stats, bool friendly, Race race);
 
 	// Getter and setter for race
 	Race getRace() const;
 	void setRace(Race race);
+	std::string raceStr(Race race) const;
 
-	void Display() const override;
+	void Display() override;
 };
 
 

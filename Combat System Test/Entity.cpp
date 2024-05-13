@@ -1,17 +1,40 @@
 #include "Entity.h"
 #include <fstream>
 
-Entity::Entity(const char* name, unsigned int level, unsigned int currentExperience, unsigned int nextLevelExperience,
-    unsigned int currentHealth, unsigned int maxHealth, unsigned int attack, unsigned int defense,
-    unsigned int speed, unsigned int luck, unsigned int specialAttack, unsigned int specialDefense)
-    : name(name), level(level), currentExperience(currentExperience), nextLevelExperience(nextLevelExperience),
-    currentHealth(currentHealth), maxHealth(maxHealth), attack(attack), defense(defense), speed(speed),
-    luck(luck), specialAttack(specialAttack), specialDefense(specialDefense), IsHostile(false) {}
+Entity::Entity(std::string _name, unsigned int _level, unsigned int _currentHealth, unsigned int _maxHealth, StatBlock _stats, bool isHostile)
+    : name(_name), level(_level), currentHealth(_currentHealth), maxHealth(_maxHealth), stats(_stats), IsHostile(false)
+{}
 
 Entity::~Entity() {}
 
 void Entity::Attack(Entity& target) {
     // Implementation of Attack function
+
+
+    //get the users weapon stats and attack stats 
+
+    //get the defendant's health, armor, and defensive stats
+
+    // create a variable for the amount of damage to apply
+
+    // create a variable to combine the defenisve stas and attack stats
+
+    //subtract that second variable from the defendants health IF the attack lands
+
+}
+
+void Entity::SpecialAttack(Entity& target)
+{
+
+    //get the users weapon stats and attack stats 
+
+    //get the defendant's health, armor, and defensive stats
+
+    // create a variable for the amount of damage to apply
+
+    // create a variable to combine the defenisve stas and attack stats
+
+    //subtract that second variable from the defendants health IF the attack lands
 }
 
 void Entity::Parry(Entity& target) {
@@ -24,6 +47,36 @@ void Entity::Dodge(Entity& target) {
 
 void Entity::Block(Entity& target) {
     // Implementation of Block function
+
+
+    // if the target is attacking do this
+    
+    // get the users weapon stats and attack stats 
+
+    // get the defendant's health, armor, and defensive stats
+
+    // create a variable for the amount of damage to apply
+
+    // create a variable to combine the defenisve stas and attack stats
+
+    // subtract that second variable from the defendants health IF the attack lands
+
+    // if the target was not attacking, nothing happens
+
+}
+
+void Entity::Support(Entity& target)
+{
+
+    //get the users weapon stats and attack stats 
+
+    //get the target's health, armor, and defensive stats
+
+    // create a variable for the amount of support to apply
+
+    // create a variable to combine the defenisve stats and support stats
+
+    //apply the support of the second variable to the target's stats IF the support suceeds
 }
 
 void Entity::Backpack() {
@@ -34,20 +87,8 @@ void Entity::OnLevelUp() {
     // Implementation of OnLevelUp function
 }
 
-const char* Entity::getName() const {
+std::string Entity::GetName() const {
     return name;
-}
-
-unsigned int Entity::getLevel() const {
-    return level;
-}
-
-unsigned int Entity::getCurrentExperience() const {
-    return currentExperience;
-}
-
-unsigned int Entity::getNextLevelExperience() const {
-    return nextLevelExperience;
 }
 
 unsigned int Entity::getCurrentHealth() const {
@@ -58,48 +99,13 @@ unsigned int Entity::getMaxHealth() const {
     return maxHealth;
 }
 
-unsigned int Entity::getAttack() const {
-    return attack;
-}
-
-unsigned int Entity::getDefense() const {
-    return defense;
-}
-
-unsigned int Entity::getSpeed() const {
-    return speed;
-}
-
-unsigned int Entity::getLuck() const {
-    return luck;
-}
-
-unsigned int Entity::getSpecialAttack() const {
-    return specialAttack;
-}
-
-unsigned int Entity::getSpecialDefense() const {
-    return specialDefense;
-}
 
 bool Entity::getIsHostile() const {
     return IsHostile;
 }
 
-void Entity::setName(const char* name) {
-    this->name = name;
-}
-
-void Entity::setLevel(unsigned int level) {
-    this->level = level;
-}
-
-void Entity::setCurrentExperience(unsigned int currentExperience) {
-    this->currentExperience = currentExperience;
-}
-
-void Entity::setNextLevelExperience(unsigned int nextLevelExperience) {
-    this->nextLevelExperience = nextLevelExperience;
+void Entity::setName(std::string& _name) {
+    name = _name;
 }
 
 void Entity::setCurrentHealth(unsigned int currentHealth) {
@@ -108,30 +114,6 @@ void Entity::setCurrentHealth(unsigned int currentHealth) {
 
 void Entity::setMaxHealth(unsigned int maxHealth) {
     this->maxHealth = maxHealth;
-}
-
-void Entity::setAttack(unsigned int attack) {
-    this->attack = attack;
-}
-
-void Entity::setDefense(unsigned int defense) {
-    this->defense = defense;
-}
-
-void Entity::setSpeed(unsigned int speed) {
-    this->speed = speed;
-}
-
-void Entity::setLuck(unsigned int luck) {
-    this->luck = luck;
-}
-
-void Entity::setSpecialAttack(unsigned int specialAttack) {
-    this->specialAttack = specialAttack;
-}
-
-void Entity::setSpecialDefense(unsigned int specialDefense) {
-    this->specialDefense = specialDefense;
 }
 
 void Entity::setIsHostile(bool IsHostile) {
