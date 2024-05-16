@@ -30,6 +30,34 @@ Stat Stat::operator-(const Stat& _factor)
     return *this;
 }
 
+Stat Stat::operator*(const Stat& _factor)
+{
+    value *= _factor.value;
+    buff *= _factor.buff;
+    debuff *= _factor.debuff;
+
+    return *this;
+}
+
+Stat Stat::operator/(const Stat& _factor)
+{
+    value /= _factor.value;
+    buff /= _factor.buff;
+    debuff /= _factor.debuff;
+
+    return *this;
+}
+
+Stat Stat::operator=(const Stat& _factor)
+{
+    if (this != &_factor) {
+        value = _factor.value;
+        buff = _factor.buff;
+        debuff = _factor.debuff;
+    }
+    return *this;
+}
+
 std::string Stat::GetName() const
 {
     return name;
@@ -96,5 +124,5 @@ void Stat::Display()
     std::cout << GetName() << ":\n";
     std::cout << "Value = " << GetValue();
     std::cout << "\tBuff = " << GetBuff();
-    std::cout << "\tDebuff = " << GetDebuff() << std::endl;
+    std::cout << "\tDebuff = " << GetDebuff() << "\n" << std::endl;
 }

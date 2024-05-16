@@ -1,6 +1,16 @@
 #include "Entity.h"
 #include <fstream>
 
+Entity::Entity()
+{
+}
+
+Entity::Entity(std::string _name, unsigned int _level)
+    : name(_name), level(_level)
+{
+
+}
+
 Entity::Entity(std::string _name, unsigned int _level, unsigned int _currentHealth, unsigned int _maxHealth, StatBlock _stats, bool isHostile)
     : name(_name), level(_level), currentHealth(_currentHealth), maxHealth(_maxHealth), stats(_stats), IsHostile(false)
 {}

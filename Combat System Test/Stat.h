@@ -9,6 +9,11 @@ public:
 	Stat(int _value, int _buff = 0, int _debuff = 0, std::string _name = "");
 	Stat operator+(const Stat& _factor);
 	Stat operator-(const Stat& _factor);
+	Stat operator*(const Stat& _factor);
+	Stat operator/(const Stat& _factor);
+	Stat operator=(const Stat& _factor);
+
+
 
 	std::string GetName() const;
 	void SetName(std::string _name);

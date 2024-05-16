@@ -135,6 +135,7 @@
     <ClCompile Include="Consumable.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Equipment.cpp" />
+    <ClCompile Include="Health.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="Consumable.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Equipment.h" />
+    <ClInclude Include="Health.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Player.h" />

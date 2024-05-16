@@ -13,6 +13,8 @@ protected:
     bool IsHostile;
 
 public:
+    Entity();
+    Entity(std::string name, unsigned int level);
     Entity(std::string name, unsigned int level, unsigned int currentHealth, unsigned int maxHealth, StatBlock stats, bool isHostile);
 
     virtual ~Entity();

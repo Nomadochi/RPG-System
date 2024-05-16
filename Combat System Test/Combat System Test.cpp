@@ -53,14 +53,10 @@ int main()
 	//ally.Serialize("entities.bin");
 	//character.Serialize("entities.bin");
 
-	Stat attack;
-	Stat specialAttack;
-	StatBlock example;
 
-	Stat answer = attack + specialAttack;
+	std::cout << std::endl;
 
-
-	example.DisplayStats();
+	//example.DisplayStats();
 
 
 }
