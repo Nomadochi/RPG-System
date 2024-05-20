@@ -3,8 +3,10 @@
 #include <limits> 
 
 
-Player::Player(std::string name, unsigned int level, unsigned int currentHealth, unsigned int maxHealth, StatBlock _stats, bool friendly, Race race)
-	: Character(name, level, currentHealth, maxHealth, stats, friendly, race) {}
+Player::Player(std::string name, unsigned int level, Race race, bool friendly)
+	: Character(name, level, race, friendly)
+{
+}
 
 
 

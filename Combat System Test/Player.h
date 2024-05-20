@@ -9,7 +9,7 @@ private:
 	std::vector<Item*> equipment;
 
 public:
-	Player(std::string name, unsigned int level, unsigned int currentHealth, unsigned int maxHealth, StatBlock _stats, bool friendly, Race race);
+	Player(std::string name, unsigned int level, Race race, bool friendly);
 
 
 	void chooseName();

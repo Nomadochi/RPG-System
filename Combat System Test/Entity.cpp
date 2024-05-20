@@ -2,18 +2,16 @@
 #include <fstream>
 
 Entity::Entity()
-{
-}
-
-Entity::Entity(std::string _name, unsigned int _level)
-    : name(_name), level(_level)
+    : name(""), level(5), IsHostile(false)
 {
 
 }
 
-Entity::Entity(std::string _name, unsigned int _level, unsigned int _currentHealth, unsigned int _maxHealth, StatBlock _stats, bool isHostile)
-    : name(_name), level(_level), currentHealth(_currentHealth), maxHealth(_maxHealth), stats(_stats), IsHostile(false)
-{}
+
+Entity::Entity(std::string _name, unsigned int _level, bool isHostile)
+    : name(_name), level(_level), IsHostile(false)
+{
+}
 
 Entity::~Entity() {}
 
@@ -101,29 +99,12 @@ std::string Entity::GetName() const {
     return name;
 }
 
-unsigned int Entity::getCurrentHealth() const {
-    return currentHealth;
-}
-
-unsigned int Entity::getMaxHealth() const {
-    return maxHealth;
-}
-
-
 bool Entity::getIsHostile() const {
     return IsHostile;
 }
 
 void Entity::setName(std::string& _name) {
     name = _name;
-}
-
-void Entity::setCurrentHealth(unsigned int currentHealth) {
-    this->currentHealth = currentHealth;
-}
-
-void Entity::setMaxHealth(unsigned int maxHealth) {
-    this->maxHealth = maxHealth;
 }
 
 void Entity::setIsHostile(bool IsHostile) {

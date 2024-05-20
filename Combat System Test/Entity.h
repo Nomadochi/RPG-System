@@ -2,21 +2,19 @@
 #include "StatBlock.h"
 #include "Level.h"
 #include <string>
+#include "Health.h"
 
 class Entity {
 protected:
     std::string name;
     Level level;
-    unsigned int currentHealth;
-    unsigned int maxHealth;
     StatBlock stats;
     bool IsHostile;
+    Health health;
 
 public:
     Entity();
-    Entity(std::string name, unsigned int level);
-    Entity(std::string name, unsigned int level, unsigned int currentHealth, unsigned int maxHealth, StatBlock stats, bool isHostile);
-
+    Entity(std::string name, unsigned int level, bool isHostile = false);   
     virtual ~Entity();
 
     virtual void Attack(Entity& target);
@@ -26,23 +24,16 @@ public:
     virtual void Block(Entity& target);
     virtual void Support(Entity& target);
     virtual void Backpack();
-
     virtual void OnLevelUp();
 
     // Getters
     std::string GetName() const;
-    unsigned int getCurrentHealth() const;
-    unsigned int getMaxHealth() const;
     bool getIsHostile() const;
 
     // Setters
     void setName(std::string& _name);
-    void setCurrentHealth(unsigned int currentHealth);
-    void setMaxHealth(unsigned int maxHealth);
     void setIsHostile(bool IsHostile);
-
     virtual void Display() = 0;
-
     void Serialize(const char* filename) const;
     void Deserialize(const char* filename);
 };

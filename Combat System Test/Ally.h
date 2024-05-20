@@ -3,7 +3,7 @@
 
 class Ally : public Player {
 public:
-	Ally(std::string name, unsigned int level, unsigned int currentHealth, unsigned int maxHealth, StatBlock _stats, bool friendly,	Race race);
+	Ally(std::string name, unsigned int level, Race race, bool friendly);
 
 	void OnLevelUp() override;
 };
