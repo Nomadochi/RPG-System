@@ -19,6 +19,9 @@ public:
 	void SetName(std::string _name);
 	int GetValue();
 	void SetValue(int _value);
+	void SetValue(float _value);
+	void IncreaseValue(int _value);
+	void IncreaseValue(float _value);
 	int GetBuff();
 	void SetBuff(int _buff);	
 	void ApplyBuff();

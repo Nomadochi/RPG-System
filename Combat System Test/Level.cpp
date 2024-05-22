@@ -6,6 +6,8 @@ Level::Level()
 	currentExperience = 1;
 	nextLevelExperience = 2;
 	levelingScale = 0.0f;
+	levelingBuff = 0.0f;
+	leveledUp = false;
 }
 
 Level::Level(unsigned int _level, unsigned int _currExp, unsigned int _nexLevExp, float _scale, float buff, bool lvlUp)

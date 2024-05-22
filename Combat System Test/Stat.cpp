@@ -78,6 +78,24 @@ void Stat::SetValue(int _value)
     value = _value;
 }
 
+void Stat::SetValue(float _value)
+{
+    value = (int)_value;
+
+}
+
+void Stat::IncreaseValue(int _value)
+{
+    value += _value;
+
+}
+
+void Stat::IncreaseValue(float _value)
+{
+    value += (int)_value;
+
+}
+
 int Stat::GetBuff()
 {
     return buff;
