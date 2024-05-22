@@ -202,10 +202,26 @@ int main()
 	//people.push_back(spirit);
 
 
-	for (int i = 0; i < people.size(); i++) {
-	people[i].Display();
+//	for (int i = 0; i < people.size(); i++) {
+//	people[i].Display();
+//	std::cout << std::endl;
+//	std::cout << std::endl;
+//}
+
+
+	Player newPlayer("", 5, Character::Race::HUMAN, false);
+
+	newPlayer.Display();
 	std::cout << std::endl;
 	std::cout << std::endl;
-}
+	newPlayer.chooseName();
+	newPlayer.chooseRace();
+	std::cout << std::endl;
+	std::cout << std::endl;
+	newPlayer.Display();
+
+
+
+
 
 }

@@ -8,6 +8,7 @@ private:
 	std::vector<Item*> inventory;
 	std::vector<Item*> equipment;
 
+
 public:
 	Player(std::string name, unsigned int level, Race race, bool friendly);
 

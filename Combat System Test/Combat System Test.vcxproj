@@ -137,6 +137,7 @@
     <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="Health.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Iuvo.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Stat.cpp" />
@@ -153,6 +154,7 @@
     <ClInclude Include="Equipment.h" />
     <ClInclude Include="Health.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="Iuvo.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Stat.h" />
