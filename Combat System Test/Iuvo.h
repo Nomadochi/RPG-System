@@ -30,7 +30,7 @@ namespace Iuvo
 	void Write(const std::string message);
 	void WriteLine(const std::string message);
 	void ClearConsole();
-	static void PressAnyKeyToContinue();
+	void PressAnyKeyToContinue();
 	bool WipeAndFlush();
 	bool Flush();
 	int GetValidatedInt(const char* message, int MinRange = 0, int MaxRange = 0);

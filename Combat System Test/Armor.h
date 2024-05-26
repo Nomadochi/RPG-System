@@ -10,7 +10,7 @@ private:
 
 public:
 
-	Armor(const char* name, const char* type, int value, const char* description,
+	Armor(std::string name, std::string type, int value, std::string description,
 		unsigned int durability, unsigned int statBonus, unsigned int weight,
 		unsigned int defense, ArmorSlot armorSlot);
 	~Armor();

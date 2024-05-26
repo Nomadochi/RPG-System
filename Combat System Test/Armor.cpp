@@ -1,7 +1,7 @@
 #include "Armor.h"
 #include <iostream>
 
-Armor::Armor(const char* name, const char* type, int value, const char* description,
+Armor::Armor(std::string name, std::string type, int value, std::string description,
     unsigned int durability, unsigned int statBonus, unsigned int weight,
     unsigned int defense, ArmorSlot armorSlot)
     : Equipment(name, type, value, description, durability, statBonus, weight),

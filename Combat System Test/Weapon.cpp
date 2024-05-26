@@ -1,7 +1,7 @@
 #include "Weapon.h"
 #include <iostream>
 
-Weapon::Weapon(const char* name, const char* type, int value, const char* description,
+Weapon::Weapon(std::string name, std::string type, int value, std::string description,
     unsigned int durability, unsigned int statBonus, unsigned int weight,
     unsigned int accuracy, unsigned int damage)
     : Equipment(name, type, value, description, durability, statBonus, weight),

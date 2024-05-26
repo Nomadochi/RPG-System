@@ -1,16 +1,12 @@
 #include "Equipment.h"
 #include <iostream>
 
-Equipment::Equipment(const char* name, const char* type, int value, const char* description,
+Equipment::Equipment(std::string name, std::string type, int value, std::string description,
     unsigned int durability, unsigned int statBonus, unsigned int weight)
-    : Item(name, type, value, ""), description(description), durability(durability),
+    : Item(name, type, value, description), durability(durability),
     statBonus(statBonus), weight(weight) {}
 
 Equipment::~Equipment() {}
-
-const char* Equipment::getDescription() const {
-    return description;
-}
 
 unsigned int Equipment::getDurability() const {
     return durability;
@@ -24,9 +20,6 @@ unsigned int Equipment::getWeight() const {
     return weight;
 }
 
-void Equipment::setDescription(const char* description) {
-    this->description = description;
-}
 
 void Equipment::setDurability(unsigned int durability) {
     this->durability = durability;
