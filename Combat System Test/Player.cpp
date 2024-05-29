@@ -7,7 +7,7 @@ Player::Player(std::string name, unsigned int level, Race race, bool friendly)
 	: Character(name, level, race, friendly)
 {
 	Entity::level.SetCurrentExperience(0);
-	Entity::level.SetCurrentExperience(0);
+	Entity::level.SetNextLevelExperience(100);
 
 	equipment.push_back(headpiece);
 	equipment.push_back(chest);
@@ -48,25 +48,73 @@ void Player::EquipFromInventory()
 	if (Weapon* newWeapon = dynamic_cast<Weapon*>(toEquip)){
 		SetWeapon(*newWeapon);
 		std::cout << newWeapon->getName() << " was equipped as your weapon." << std::endl;
+		ConvertEquipmentStats(toEquip);
 	}
 	if (Armor* newArmor = dynamic_cast<Armor*>(toEquip)) {
 		if (newArmor->getArmorSlot() == HEAD) {
 			SetHeadPiece(*newArmor);
 			std::cout << newArmor->getName() << " was equipped in your HEAD Armor slot." << std::endl;
+			ConvertEquipmentStats(toEquip);
 		}
 		else if (newArmor->getArmorSlot() == CHEST) {
 			SetChestPiece(*newArmor);
 			std::cout << newArmor->getName() << " was equipped in your CHEST Armor slot." << std::endl;
+			ConvertEquipmentStats(toEquip);
 		}
 		else if (newArmor->getArmorSlot() == ARMS) {
 			SetArmPiece(*newArmor);
 			std::cout << newArmor->getName() << " was equipped in your ARMS Armor slot." << std::endl;
+			ConvertEquipmentStats(toEquip);
 		}
 		else if (newArmor->getArmorSlot() == LEGS) {
 			SetLegPiece(*newArmor);
 			std::cout << newArmor->getName() << " was equipped in your LEGS Armor slot." << std::endl;
+			ConvertEquipmentStats(toEquip);
 		}	
 	}	
+}
+
+void Player::AutoEquipFromInventory()
+{
+	// Check each equipment slot
+
+	//If equipment slot is empty, search the inventory for something that fits that slot
+
+	//Equip the item that fits that slot
+
+	//if equipment slot is not empty, get the equipped item's stats
+
+	// compare the equpped items stats to every other item of the same slot in the inventory
+
+
+}
+
+void Player::ConvertEquipmentStats(Item* thing)
+{
+	if (Weapon* newWeapon = dynamic_cast<Weapon*>(thing)) {
+		int attackBonus = newWeapon->getStatBonus();
+		stats.attack.IncreaseValue(attackBonus);
+	}
+	if (Armor* newArmor = dynamic_cast<Armor*>(thing)) {
+		if (newArmor->getArmorSlot() == HEAD) {
+			int defenseBonus = newArmor->getStatBonus();
+			stats.defense.IncreaseValue(defenseBonus);
+		}
+		else if (newArmor->getArmorSlot() == CHEST) {
+			int defenseBonus = newArmor->getStatBonus();
+			stats.defense.IncreaseValue(defenseBonus);
+		}
+		else if (newArmor->getArmorSlot() == ARMS) {
+			int defenseBonus = newArmor->getStatBonus();
+			stats.defense.IncreaseValue(defenseBonus);
+
+		}
+		else if (newArmor->getArmorSlot() == LEGS) {
+			int defenseBonus = newArmor->getStatBonus();
+			stats.defense.IncreaseValue(defenseBonus);
+
+		}
+	}
 }
 
 void Player::chooseName() {
@@ -121,11 +169,14 @@ void Player::SetHeadPiece(Armor& _head)
 {
 	if (_head.getArmorSlot() == ArmorSlot::HEAD) {
 		headpiece = &_head;
+		ConvertEquipmentStats((Item*)&_head);
 	}
 }
 
 void Player::RemoveHeadPiece()
 {
+	int bonus = headpiece->getStatBonus();
+	stats.defense.DecreaseValue(bonus);
 	headpiece = nullptr;
 }
 
@@ -133,11 +184,15 @@ void Player::SetChestPiece(Armor& _chest)
 {
 	if (_chest.getArmorSlot() == ArmorSlot::CHEST) {
 		chest = &_chest;
+		ConvertEquipmentStats((Item*)&_chest);
+
 	}
 }
 
 void Player::RemoveChestPiece()
 {
+	int bonus = chest->getStatBonus();
+	stats.defense.DecreaseValue(bonus);
 	chest = nullptr;
 }
 
@@ -145,11 +200,15 @@ void Player::SetArmPiece(Armor& _arms)
 {
 	if (_arms.getArmorSlot() == ArmorSlot::ARMS) {
 		arms = &_arms;
+		ConvertEquipmentStats((Item*)&_arms);
+
 	}
 }
 
 void Player::RemoveArmpiece()
 {
+	int bonus = arms->getStatBonus();
+	stats.defense.DecreaseValue(bonus);
 	arms = nullptr;
 }
 
@@ -157,21 +216,29 @@ void Player::SetLegPiece(Armor& _legs)
 {
 	if (_legs.getArmorSlot() == ArmorSlot::LEGS) {
 		legs = &_legs;
+		ConvertEquipmentStats((Item*)&_legs);
+
 	}
 }
 
 void Player::RemoveLegPiece()
 {
+	int bonus = legs->getStatBonus();
+	stats.defense.DecreaseValue(bonus);
 	legs = nullptr;
 }
 
 void Player::SetWeapon(Weapon& _weapon)
 {
 	weapon = &_weapon;
+	ConvertEquipmentStats((Item*)&_weapon);
+
 }
 
 void Player::RemoveWeapon()
 {
+	int bonus = weapon->getStatBonus();
+	stats.attack.DecreaseValue(bonus);
 	weapon = nullptr;
 }
 

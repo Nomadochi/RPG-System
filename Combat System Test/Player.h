@@ -15,6 +15,7 @@ private:
 	Armor* legs = nullptr;
 	Weapon* weapon = nullptr;
 
+	void ConvertEquipmentStats(Item* thing);
 public:
 	Player(std::string name, unsigned int level, Race race, bool friendly);
 
@@ -22,7 +23,6 @@ public:
 	void RemoveFromInventory(Item* _thing);
 	void EquipFromInventory();
 	void AutoEquipFromInventory();
-	void ConvertEquipmentStats();
 
 	void chooseName();
 	void chooseRace();

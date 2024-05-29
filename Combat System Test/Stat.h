@@ -22,6 +22,8 @@ public:
 	void SetValue(float _value);
 	void IncreaseValue(int _value);
 	void IncreaseValue(float _value);
+	void DereaseValue(int _value);
+	void DecreaseValue(float _value);
 	int GetBuff();
 	void SetBuff(int _buff);	
 	void ApplyBuff();

@@ -96,6 +96,16 @@ void Stat::IncreaseValue(float _value)
 
 }
 
+void Stat::DereaseValue(int _value)
+{
+    value -= _value;
+}
+
+void Stat::DecreaseValue(float _value)
+{
+    value -= (int)_value;
+}
+
 int Stat::GetBuff()
 {
     return buff;

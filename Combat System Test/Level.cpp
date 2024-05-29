@@ -59,6 +59,10 @@ void Level::SetNextLevelExperience(unsigned int _nextLevelExperience)
 		level += 1;
 		DidLvlUp();
 	}
+	else
+	{
+		nextLevelExperience = _nextLevelExperience;
+	}
 }
 
 float Level::GetLevelingScale() const
