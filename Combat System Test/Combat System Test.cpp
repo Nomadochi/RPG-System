@@ -22,23 +22,8 @@ int main()
 	Armor* chest = new Armor("Leather Chestplate", "Armor", 100, "A protective chest piece woven together from the skin of various creatures, harden over long exposure to heat.", 92, 8, 7, 15, ArmorSlot::CHEST);
 	Armor* legs = new Armor("Pressed Aluminum Boots", "Armor", 15, "Made from molten aluminum pressed into a mold. They are light yet durable.", 85, 4, 2, 5, ArmorSlot::LEGS);
 
-	Player newPlayer("", 5, Character::Race::HUMAN, false);
+	Player newPlayer("Nomad", 1, Character::Race::KOBOLD, false);
 
-
-
-
-	newPlayer.Display();
-	Iuvo::PressAnyKeyToContinue();
-	Iuvo::ClearConsole();
-	newPlayer.chooseName();
-	Iuvo::PressAnyKeyToContinue();
-	Iuvo::ClearConsole();
-	newPlayer.chooseRace();
-	newPlayer.Display();
-
-	Iuvo::PressAnyKeyToContinue();
-	Iuvo::ClearConsole();
-	newPlayer.displayInventory();
 
 	newPlayer.AddToInventory(weapon);
 	newPlayer.AddToInventory(helmet);
@@ -51,10 +36,12 @@ int main()
 	Iuvo::PressAnyKeyToContinue();
 	Iuvo::ClearConsole();
 
-	std::cout << "Everything is looking good so far!" << std::endl;
+	newPlayer.Display();
 	Iuvo::PressAnyKeyToContinue();
 	Iuvo::ClearConsole();
-	newPlayer.EquipFromInventory();
+
+	newPlayer.AutoEquipFromInventory();
+	newPlayer.Display();
 	Iuvo::PressAnyKeyToContinue();
 	Iuvo::ClearConsole();
 

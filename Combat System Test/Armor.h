@@ -14,6 +14,9 @@ public:
 		unsigned int durability, unsigned int statBonus, unsigned int weight,
 		unsigned int defense, ArmorSlot armorSlot);
 	~Armor();
+	bool operator<(const Armor& _armor);
+	bool operator>(const Armor& _armor);
+	bool operator=(const Armor& _armor);
 
 	unsigned int getDefense() const;
 	ArmorSlot getArmorSlot() const;

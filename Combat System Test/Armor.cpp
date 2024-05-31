@@ -9,6 +9,114 @@ Armor::Armor(std::string name, std::string type, int value, std::string descript
 
 Armor::~Armor() {}
 
+bool Armor::operator<(const Armor& _armor)
+{
+    bool _durability = false;
+    bool _bonus = false;
+    bool _weight = false;
+    bool _defense = false;
+    bool lessThan = false;
+
+    if (getDurability() < _armor.getDurability()) {
+        _durability = true;
+    }
+    if (getStatBonus() < _armor.getStatBonus()) {
+        _bonus = true;
+    }
+    if (getWeight() < _armor.getWeight()) {
+        _weight = true;
+    }
+    if (getDefense() < _armor.getDefense()) {
+        _defense = true;
+    }
+
+    if (_defense && _durability && _bonus && _weight) {
+        lessThan = true;
+    }
+    else if (_defense && _bonus && _weight) {
+        lessThan = true;
+    }
+    else if (_defense && _bonus) {
+        lessThan = true;
+    }
+    else {
+        lessThan = false;
+    }
+
+    return lessThan;
+}
+
+bool Armor::operator>(const Armor& _armor)
+{
+    bool _durability = false;
+    bool _bonus = false;
+    bool _weight = false;
+    bool _defense = false;
+    bool lessThan = false;
+
+    if (getDurability() > _armor.getDurability()) {
+        _durability = true;
+    }
+    if (getStatBonus() > _armor.getStatBonus()) {
+        _bonus = true;
+    }
+    if (getWeight() > _armor.getWeight()) {
+        _weight = true;
+    }
+    if (getDefense() > _armor.getDefense()) {
+        _defense = true;
+    }
+
+    if (_defense && _durability && _bonus && _weight) {
+        lessThan = true;
+    }
+    else if (_defense && _bonus && _weight) {
+        lessThan = true;
+    }
+    else if (_defense && _bonus) {
+        lessThan = true;
+    }
+    else {
+        lessThan = false;
+    }
+
+    return lessThan;
+}
+
+bool Armor::operator=(const Armor& _armor)
+{
+    bool _durability = false;
+    bool _bonus = false;
+    bool _weight = false;
+    bool _defense = false;
+    bool lessThan = false;
+
+    if (getDurability() == _armor.getDurability()) {
+        _durability = true;
+    }
+    if (getStatBonus() == _armor.getStatBonus()) {
+        _bonus = true;
+    }
+    if (getWeight() == _armor.getWeight()) {
+        _weight = true;
+    }
+    if (getDefense() == _armor.getDefense()) {
+        _defense = true;
+    }
+
+    if (_defense && _durability && _bonus && _weight) {
+        lessThan = true;
+    }
+    else if (_defense && _bonus && _weight) {
+        lessThan = true;
+    }
+    else {
+        lessThan = false;
+    }
+
+    return lessThan;
+}
+
 unsigned int Armor::getDefense() const {
     return defense;
 }

@@ -14,6 +14,10 @@ public:
 		unsigned int durability, unsigned int statBonus, unsigned int weight,
 		unsigned int accuracy, unsigned int damage);
 	~Weapon();
+	bool operator<(const Weapon& _weapon);
+	bool operator>(const Weapon& _weapon);
+	bool operator=(const Weapon& _weapon);
+
 
 	unsigned int getAccuracy() const;
 	unsigned int getDamage() const;

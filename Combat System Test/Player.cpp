@@ -45,7 +45,7 @@ void Player::EquipFromInventory()
 	displayInventory();
 	int choice = -1 + Iuvo::GetValidatedInt("Enter the number of the item you would like to equip:", -1, inventory.size());
 	Item* toEquip = inventory[choice];
-	if (Weapon* newWeapon = dynamic_cast<Weapon*>(toEquip)){
+	if (Weapon* newWeapon = dynamic_cast<Weapon*>(toEquip)) {
 		SetWeapon(*newWeapon);
 		std::cout << newWeapon->getName() << " was equipped as your weapon." << std::endl;
 		ConvertEquipmentStats(toEquip);
@@ -70,14 +70,135 @@ void Player::EquipFromInventory()
 			SetLegPiece(*newArmor);
 			std::cout << newArmor->getName() << " was equipped in your LEGS Armor slot." << std::endl;
 			ConvertEquipmentStats(toEquip);
-		}	
-	}	
+		}
+	}
 }
 
 void Player::AutoEquipFromInventory()
 {
-	// Check each equipment slot
+	if (headpiece == nullptr) {
+		for (int i = 0; i < inventory.size(); i++) {
+			if (Armor* newArmor = dynamic_cast<Armor*>(inventory[i])) {
+				if (newArmor->getArmorSlot() == HEAD) {
+					SetHeadPiece(*newArmor);
+					ConvertEquipmentStats(inventory[i]);
+					break;
+				}
+			}
+		}
+	}
+	else if (headpiece != nullptr) {
+		for (int i = 0; i < inventory.size(); i++) {
+			if (Armor* newArmor = dynamic_cast<Armor*>(inventory[i])) {
+				if (newArmor->getArmorSlot() == HEAD) {
+					if (headpiece < newArmor) {
+						SetHeadPiece(*newArmor);
+						ConvertEquipmentStats(inventory[i]);
+						break;
+					}
+				}
+			}
+		}
+	}
 
+	if (chest == nullptr) {
+		for (int i = 0; i < inventory.size(); i++) {
+			if (Armor* newArmor = dynamic_cast<Armor*>(inventory[i])) {
+				if (newArmor->getArmorSlot() == CHEST) {
+					SetHeadPiece(*newArmor);
+					ConvertEquipmentStats(inventory[i]);
+					break;
+				}
+			}
+		}
+	}
+	else if (chest != nullptr) {
+		for (int i = 0; i < inventory.size(); i++) {
+			if (Armor* newArmor = dynamic_cast<Armor*>(inventory[i])) {
+				if (newArmor->getArmorSlot() == CHEST) {
+					if (chest < newArmor) {
+						SetHeadPiece(*newArmor);
+						ConvertEquipmentStats(inventory[i]);
+						break;
+					}
+				}
+			}
+		}
+	}
+
+	if (arms == nullptr) {
+		for (int i = 0; i < inventory.size(); i++) {
+			if (Armor* newArmor = dynamic_cast<Armor*>(inventory[i])) {
+				if (newArmor->getArmorSlot() == ARMS) {
+					SetHeadPiece(*newArmor);
+					ConvertEquipmentStats(inventory[i]);
+					break;
+				}
+			}
+		}
+	}
+	else if (arms != nullptr) {
+		for (int i = 0; i < inventory.size(); i++) {
+			if (Armor* newArmor = dynamic_cast<Armor*>(inventory[i])) {
+				if (newArmor->getArmorSlot() == ARMS) {
+					if (headpiece < newArmor) {
+						SetHeadPiece(*newArmor);
+						ConvertEquipmentStats(inventory[i]);
+						break;
+					}
+				}
+			}
+		}
+	}
+
+	if (legs == nullptr) {
+		for (int i = 0; i < inventory.size(); i++) {
+			if (Armor* newArmor = dynamic_cast<Armor*>(inventory[i])) {
+				if (newArmor->getArmorSlot() == LEGS) {
+					SetHeadPiece(*newArmor);
+					ConvertEquipmentStats(inventory[i]);
+					break;
+				}
+			}
+		}
+	}
+	else if (legs != nullptr) {
+		for (int i = 0; i < inventory.size(); i++) {
+			if (Armor* newArmor = dynamic_cast<Armor*>(inventory[i])) {
+				if (newArmor->getArmorSlot() == LEGS) {
+					if (headpiece < newArmor) {
+						SetHeadPiece(*newArmor);
+						ConvertEquipmentStats(inventory[i]);
+						break;
+					}
+				}
+			}
+		}
+	}
+
+	if (weapon == nullptr) {
+		for (int i = 0; i < inventory.size(); i++) {
+			if (Weapon* newWeapon = dynamic_cast<Weapon*>(inventory[i])) {
+				SetWeapon(*newWeapon);
+				ConvertEquipmentStats(inventory[i]);
+				break;
+			}
+		}
+	}
+	else if (weapon != nullptr) {
+		for (int i = 0; i < inventory.size(); i++) {
+			if (Weapon* newWeapon = dynamic_cast<Weapon*>(inventory[i])) {
+				if (weapon < newWeapon) {
+					SetWeapon(*newWeapon);
+					ConvertEquipmentStats(inventory[i]);
+					break;
+				}
+			}
+		}
+	}
+
+
+	// Check each equipment slot
 	//If equipment slot is empty, search the inventory for something that fits that slot
 
 	//Equip the item that fits that slot
@@ -86,6 +207,7 @@ void Player::AutoEquipFromInventory()
 
 	// compare the equpped items stats to every other item of the same slot in the inventory
 
+	// if equipped is worse, equip the better one, if not do nothing
 
 }
 
@@ -167,6 +289,9 @@ void Player::displayInventory() const {
 
 void Player::SetHeadPiece(Armor& _head)
 {
+	if (headpiece != nullptr) {
+		RemoveHeadPiece();
+	}
 	if (_head.getArmorSlot() == ArmorSlot::HEAD) {
 		headpiece = &_head;
 		ConvertEquipmentStats((Item*)&_head);
@@ -182,6 +307,9 @@ void Player::RemoveHeadPiece()
 
 void Player::SetChestPiece(Armor& _chest)
 {
+	if (chest != nullptr) {
+		RemoveChestPiece();
+	}
 	if (_chest.getArmorSlot() == ArmorSlot::CHEST) {
 		chest = &_chest;
 		ConvertEquipmentStats((Item*)&_chest);
@@ -198,6 +326,9 @@ void Player::RemoveChestPiece()
 
 void Player::SetArmPiece(Armor& _arms)
 {
+	if (arms != nullptr) {
+		RemoveArmpiece();
+	}
 	if (_arms.getArmorSlot() == ArmorSlot::ARMS) {
 		arms = &_arms;
 		ConvertEquipmentStats((Item*)&_arms);
@@ -214,6 +345,9 @@ void Player::RemoveArmpiece()
 
 void Player::SetLegPiece(Armor& _legs)
 {
+	if (legs != nullptr) {
+		RemoveLegPiece();
+	}
 	if (_legs.getArmorSlot() == ArmorSlot::LEGS) {
 		legs = &_legs;
 		ConvertEquipmentStats((Item*)&_legs);
