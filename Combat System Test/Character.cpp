@@ -21,13 +21,14 @@ void Character::ApplyRaceStats(Race race)
     case PLANT:
     {
 
-        level.SetLevelingScale(0.5f);
-        level.SetCurrentExperience(0);
-        level.SetNextLevelExperience(100);
         
+        level.SetLevelingScale(0.5f);
         float fakeLevel = (float)level.GetLevel();
         float levelScalar = level.GetLevelingScale();
 
+        level.SetCurrentExperience(0);
+        float newExp = 100.0f * level.GetLevelingScale();
+        level.SetNextLevelExperience((unsigned int)newExp);
 
         stats.attack.SetValue(1);
         stats.defense.SetValue(4);
@@ -64,8 +65,10 @@ void Character::ApplyRaceStats(Race race)
         level.SetLevelingScale(1.5f);
         float fakeLevel = (float)level.GetLevel();
         float levelScalar = level.GetLevelingScale();
-        level.SetNextLevelExperience(100);
 
+        level.SetCurrentExperience(0);
+        float newExp = 100.0f * level.GetLevelingScale();
+        level.SetNextLevelExperience((unsigned int)newExp);
 
         stats.attack.SetValue(4);
         stats.defense.SetValue(3);
@@ -98,8 +101,10 @@ void Character::ApplyRaceStats(Race race)
         level.SetLevelingScale(1.9f);
         float fakeLevel = (float)level.GetLevel();
         float levelScalar = level.GetLevelingScale();
-        level.SetNextLevelExperience(100);
 
+        level.SetCurrentExperience(0);
+        float newExp = 100.0f * level.GetLevelingScale();
+        level.SetNextLevelExperience((unsigned int)newExp);
 
         stats.attack.SetValue(1);
         stats.defense.SetValue(1);
@@ -132,8 +137,10 @@ void Character::ApplyRaceStats(Race race)
         level.SetLevelingScale(2.5f);
         float fakeLevel = (float)level.GetLevel();
         float levelScalar = level.GetLevelingScale();
-        level.SetNextLevelExperience(100);
 
+        level.SetCurrentExperience(0);
+        float newExp = 100.0f * level.GetLevelingScale();
+        level.SetNextLevelExperience((unsigned int)newExp);
 
         stats.attack.SetValue(3);
         stats.defense.SetValue(2);
@@ -166,8 +173,10 @@ void Character::ApplyRaceStats(Race race)
         level.SetLevelingScale(2.9f);
         float fakeLevel = (float)level.GetLevel();
         float levelScalar = level.GetLevelingScale();
-        level.SetNextLevelExperience(100);
 
+        level.SetCurrentExperience(0);
+        float newExp = 100.0f * level.GetLevelingScale();
+        level.SetNextLevelExperience((unsigned int)newExp);
 
         stats.attack.SetValue(4);
         stats.defense.SetValue(2);
@@ -199,8 +208,10 @@ void Character::ApplyRaceStats(Race race)
         level.SetLevelingScale(3.5f);
         float fakeLevel = (float)level.GetLevel();
         float levelScalar = level.GetLevelingScale();
-        level.SetNextLevelExperience(100);
 
+        level.SetCurrentExperience(0);
+        float newExp = 100.0f * level.GetLevelingScale();
+        level.SetNextLevelExperience((unsigned int)newExp);
 
         stats.attack.SetValue(4);
         stats.defense.SetValue(2);

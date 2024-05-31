@@ -20,6 +20,7 @@ Player::Player(std::string name, unsigned int level, Race race, bool friendly)
 void Player::AddToInventory(Item* _thing)
 {
 	inventory.push_back(_thing);
+	std::cout << _thing->getName() << " added to inventory." << std::endl;
 }
 
 void Player::RemoveFromInventory(Item* _thing)
