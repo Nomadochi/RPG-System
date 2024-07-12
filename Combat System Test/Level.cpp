@@ -2,16 +2,35 @@
 
 Level::Level()
 {
-	level = 1;
-	currentExperience = 1;
-	nextLevelExperience = 2;
-	levelingScale = 0.0f;
-	levelingBuff = 0.0f;
-	leveledUp = false;
+	m_level = 1;
+	m_currentExperience = 1;
+	m_nextLevelExperience = 2;
+	m_scale = 0.0f;
+	m_buff = 0.0f;
+	m_hasLeveledUp = false;
+}
+
+Level::Level(unsigned int _level)
+	: m_level(_level)
+{
+	m_currentExperience = 0;
+	m_nextLevelExperience = 100.f * (float)m_level;
+	m_scale = 1.0f;
+	m_buff = 0.0f;
+	m_hasLeveledUp = false;
+}
+
+Level::Level(unsigned int _level, float scalingFactor)
+	: m_level(_level), m_scale(scalingFactor)
+{
+	m_currentExperience = 0;
+	m_nextLevelExperience = 100.f * m_scale;
+	m_buff = 0.0f;
+	m_hasLeveledUp = false;
 }
 
 Level::Level(unsigned int _level, unsigned int _currExp, unsigned int _nexLevExp, float _scale, float buff, bool lvlUp)
-	: level(_level), currentExperience(_currExp), nextLevelExperience(_nexLevExp), levelingScale(_scale), levelingBuff(buff), leveledUp(lvlUp)
+	: m_level(_level), m_currentExperience(_currExp), m_nextLevelExperience(_nexLevExp), m_scale(_scale), m_buff(buff), m_hasLeveledUp(lvlUp)
 {
 
 }
@@ -20,84 +39,84 @@ Level::Level(unsigned int _level, unsigned int _currExp, unsigned int _nexLevExp
 
 unsigned int Level::GetLevel() const
 {
-	return level;
+	return m_level;
 }
 
 void Level::SetLevel(unsigned int _level)
 {
-	level = _level;
+	m_level = _level;
 }
 
 unsigned int Level::GetCurrentExperience() const
 {
-	return currentExperience;
+	return m_currentExperience;
 }
 
 void Level::SetCurrentExperience(unsigned int _currentExperience)
 {
-	currentExperience = _currentExperience;
+	m_currentExperience = _currentExperience;
 }
 
 void Level::GainExperience(unsigned int gainedExp)
 {
-	currentExperience += gainedExp;
+	m_currentExperience += gainedExp;
 }
 
 unsigned int Level::GetNextLevelExperience() const
 {
-	return nextLevelExperience;
+	return m_nextLevelExperience;
 }
 
 void Level::SetNextLevelExperience(unsigned int _nextLevelExperience)
 {
-	if (currentExperience >= nextLevelExperience) {
+	if (m_currentExperience >= m_nextLevelExperience) {
 		if (GetLevelingBuff() > 0.0f) {
 			ApplyLevelingBuff();
 		}
-		nextLevelExperience *= (int)levelingScale;
-		currentExperience = 0;
-		level += 1;
+		m_nextLevelExperience *= (int)m_scale;
+		m_currentExperience = 0;
+		m_level += 1;
 		DidLvlUp();
 	}
 	else
 	{
-		nextLevelExperience = _nextLevelExperience;
+		m_nextLevelExperience = _nextLevelExperience;
 	}
 }
 
 float Level::GetLevelingScale() const
 {
-	return levelingScale;
+	return m_scale;
 }
 
 void Level::SetLevelingScale(float _adjustment)
 {
-	levelingScale = _adjustment;
+	m_scale = _adjustment;
 }
 
 float Level::GetLevelingBuff() const
 {
-	return levelingBuff;
+	return m_buff;
 }
 
 void Level::SetLevelingBuff(float _levelBuff)
 {
-	levelingBuff = _levelBuff;
+	m_buff = _levelBuff;
 }
 
 void Level::ApplyLevelingBuff()
 {
-	levelingScale += levelingBuff;
+	m_scale += m_buff;
 }
 
 void Level::RemoveLevelingBuff()
 {
-	levelingScale -= levelingBuff;
+	m_scale -= m_buff;
 }
 
 bool Level::LeveledUp()
 {
-	if (leveledUp) {
+	if (m_hasLeveledUp) {
 		return true;
 	}
 	else {
@@ -107,11 +126,11 @@ bool Level::LeveledUp()
 
 void Level::NoLvlUp()
 {
-	leveledUp = false;
+	m_hasLeveledUp = false;
 }
 
 void Level::DidLvlUp()
 {
-	leveledUp = true;
+	m_hasLeveledUp = true;
 }
 

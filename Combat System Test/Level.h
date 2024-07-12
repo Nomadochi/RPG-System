@@ -3,7 +3,11 @@ class Level
 {
 public:
     Level();
-    Level(unsigned int _level, unsigned int _currExp = 0, unsigned int _nexLevExp = 0, float _scale = 0.0f, float buff = 0.0f, bool lvlUp = false);
+    Level(unsigned int _level);
+    Level(unsigned int _level, float scalingFactor);
+    Level(unsigned int _level, unsigned int _currExp,
+        unsigned int _nexLevExp, float _scale,
+        float buff = 0.0f, bool lvlUp = false);
     unsigned int GetLevel() const;
     void SetLevel(unsigned int _level);
     unsigned int GetCurrentExperience() const;
@@ -26,12 +30,12 @@ public:
 
 private:
 
-	unsigned int level;
-    unsigned int currentExperience;
-    unsigned int nextLevelExperience;
-    float levelingScale;
-    float levelingBuff;
-    bool leveledUp;
+	unsigned int m_level;
+    unsigned int m_currentExperience;
+    unsigned int m_nextLevelExperience;
+    float m_scale;
+    float m_buff;
+    bool m_hasLeveledUp;
 
 };
 
