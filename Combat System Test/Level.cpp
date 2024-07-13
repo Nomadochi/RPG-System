@@ -69,19 +69,8 @@ unsigned int Level::GetNextLevelExperience() const
 
 void Level::SetNextLevelExperience(unsigned int _nextLevelExperience)
 {
-	if (m_currentExperience >= m_nextLevelExperience) {
-		if (GetLevelingBuff() > 0.0f) {
-			ApplyLevelingBuff();
-		}
-		m_nextLevelExperience *= (int)m_scale;
-		m_currentExperience = 0;
-		m_level += 1;
-		DidLvlUp();
-	}
-	else
-	{
-		m_nextLevelExperience = _nextLevelExperience;
-	}
+	m_nextLevelExperience = _nextLevelExperience;
+
 }
 
 float Level::GetLevelingScale() const
