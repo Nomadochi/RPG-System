@@ -4,26 +4,27 @@
 
 class Item {
 protected:
-	std::string name;
-	std::string type;
-	int value;
-	std::string description;
+	std::string m_name;
+	std::string m_type;
+	int m_value;
+	std::string m_description;
 
 public:
+	Item();
 	Item(std::string name, std::string type, int value, std::string description);
 	virtual ~Item();
 
 	// Getters
-	std::string getName() const;
-	std::string getType() const;
-	int getValue() const;
-	std::string getDescription() const;
+	std::string Name() const;
+	std::string Type() const;
+	int Value() const;
+	std::string Description() const;
 
 	// Setters
-	void setName(std::string name);
-	void setType(std::string type);
-	void setValue(int value);
-	void setDescription(std::string description);
+	void SetName(std::string name);
+	void SetType(std::string type);
+	void SetValue(int value);
+	void SetDescription(std::string description);
 
 	virtual void Display() const = 0;
 

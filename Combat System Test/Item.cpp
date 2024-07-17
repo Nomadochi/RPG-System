@@ -1,41 +1,55 @@
 #include "Item.h"
 #include <fstream>
 
+Item::Item() 
+{
+    m_name = "broken";
+    m_type = "broken";
+    m_value = 0;
+    m_description = "broken";
+}
+
 Item::Item(std::string name, std::string type, int value, std::string description)
-    : name(name), type(type), value(value), description(description) {}
+    : m_name(name), m_type(type), m_value(value), m_description(description)
+{
 
-Item::~Item() {}
-
-std::string Item::getName() const {
-    return name;
 }
 
-std::string Item::getType() const {
-    return type;
+Item::~Item() 
+{
+
 }
 
-int Item::getValue() const {
-    return value;
+std::string Item::Name() const {
+    return m_name;
 }
 
-std::string Item::getDescription() const {
-    return description;
+std::string Item::Type() const {
+    return m_type;
 }
 
-void Item::setName(std::string name) {
-    this->name = name;
+int Item::Value() const {
+    return m_value;
 }
 
-void Item::setType(std::string type) {
-    this->type = type;
+std::string Item::Description() const {
+    return m_description;
 }
 
-void Item::setValue(int value) {
-    this->value = value;
+void Item::SetName(std::string name) {
+    m_name = name;
 }
 
-void Item::setDescription(std::string description) {
-    this->description = description;
+void Item::SetType(std::string type) {
+    m_type = type;
+}
+
+void Item::SetValue(int value) {
+    m_value = value;
+}
+
+void Item::SetDescription(std::string description) {
+    m_description = description;
 }
 
 void Item::Serialize(const char* filename) const {
