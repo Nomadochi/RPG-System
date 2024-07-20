@@ -15,9 +15,9 @@ void Consumable::setEffect(const char* effect) {
 }
 
 void Consumable::Display() const {
-    std::cout << "Name: " << getName() << std::endl;
-    std::cout << "Type: " << getType() << std::endl;
-    std::cout << "Value: " << getValue() << std::endl;
-    std::cout << "Description: " << getDescription() << std::endl;
+    std::cout << "Name: " << Name() << std::endl;
+    std::cout << "Type: " << Type() << std::endl;
+    std::cout << "Value: " << Value() << std::endl;
+    std::cout << "Description: " << Description() << std::endl;
     std::cout << "Effect: " << effect << std::endl;
 }

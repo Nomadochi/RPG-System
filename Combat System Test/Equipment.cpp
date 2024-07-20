@@ -34,10 +34,10 @@ void Equipment::setWeight(unsigned int weight) {
 }
 
 void Equipment::Display() const {
-    std::cout << "Name: " << getName() << std::endl;
-    std::cout << "Type: " << getType() << std::endl;
-    std::cout << "Value: " << getValue() << std::endl;
-    std::cout << "Description: " << description << std::endl;
+    std::cout << "Name: " << Name() << std::endl;
+    std::cout << "Type: " << Type() << std::endl;
+    std::cout << "Value: " << Value() << std::endl;
+    std::cout << "Description: " << Description() << std::endl;
     std::cout << "Durability: " << durability << std::endl;
     std::cout << "Stat Bonus: " << statBonus << std::endl;
     std::cout << "Weight: " << weight << std::endl;

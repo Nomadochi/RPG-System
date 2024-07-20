@@ -20,7 +20,7 @@ Player::Player(std::string name, unsigned int level, Race race, bool friendly)
 void Player::AddToInventory(Item* _thing)
 {
 	inventory.push_back(_thing);
-	std::cout << _thing->getName() << " added to inventory." << std::endl;
+	std::cout << _thing->Name() << " added to inventory." << std::endl;
 }
 
 void Player::RemoveFromInventory(Item* _thing)
@@ -48,28 +48,28 @@ void Player::EquipFromInventory()
 	Item* toEquip = inventory[choice];
 	if (Weapon* newWeapon = dynamic_cast<Weapon*>(toEquip)) {
 		SetWeapon(*newWeapon);
-		std::cout << newWeapon->getName() << " was equipped as your weapon." << std::endl;
+		std::cout << newWeapon->Name() << " was equipped as your weapon." << std::endl;
 		ConvertEquipmentStats(toEquip);
 	}
 	if (Armor* newArmor = dynamic_cast<Armor*>(toEquip)) {
 		if (newArmor->getArmorSlot() == HEAD) {
 			SetHeadPiece(*newArmor);
-			std::cout << newArmor->getName() << " was equipped in your HEAD Armor slot." << std::endl;
+			std::cout << newArmor->Name() << " was equipped in your HEAD Armor slot." << std::endl;
 			ConvertEquipmentStats(toEquip);
 		}
 		else if (newArmor->getArmorSlot() == CHEST) {
 			SetChestPiece(*newArmor);
-			std::cout << newArmor->getName() << " was equipped in your CHEST Armor slot." << std::endl;
+			std::cout << newArmor->Name() << " was equipped in your CHEST Armor slot." << std::endl;
 			ConvertEquipmentStats(toEquip);
 		}
 		else if (newArmor->getArmorSlot() == ARMS) {
 			SetArmPiece(*newArmor);
-			std::cout << newArmor->getName() << " was equipped in your ARMS Armor slot." << std::endl;
+			std::cout << newArmor->Name() << " was equipped in your ARMS Armor slot." << std::endl;
 			ConvertEquipmentStats(toEquip);
 		}
 		else if (newArmor->getArmorSlot() == LEGS) {
 			SetLegPiece(*newArmor);
-			std::cout << newArmor->getName() << " was equipped in your LEGS Armor slot." << std::endl;
+			std::cout << newArmor->Name() << " was equipped in your LEGS Armor slot." << std::endl;
 			ConvertEquipmentStats(toEquip);
 		}
 	}
